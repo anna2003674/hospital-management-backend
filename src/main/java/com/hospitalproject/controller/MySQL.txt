@@ -1,0 +1,47 @@
+
+//Создание БД
+CREATE DATABASE hospital_db;
+
+//Создание таблиц Doctor и Patient
+CREATE TABLE hospital_db.Doctor(
+id int primary key auto_increment,
+name varchar(30) not null,
+position varchar(30) not null,
+working_hours varchar(11)
+);
+
+CREATE TABLE hospital_db.Patient(
+id int primary key auto_increment,
+age int not null,
+disease varchar(30) not null,
+name varchar(30) not null,
+doctor_id int not null,
+foreign key(doctor_id) references hospital_db.Doctor(id) on delete cascade
+);
+
+
+//Заполнение таблиц doctor, patient
+INSERT INTO hospital_db.doctor(name, position, working_hours)
+value("Руслан","Хирург","08:00-19:30"),
+("Марина","Терапевт","09:00-18:00"),
+("Александр","Стоматолог","08:45-16:44"),
+("Анна","Гастроэнтеролог","09:00-19:00"),
+("Дарья","Дерматолог","10:00-17:30");
+
+INSERT INTO hospital_db.patient(age, disease, name, doctor_id)
+values(27, "Аппендицит", "Павел", 56),
+(22, "Кишечная непроходимость", "Иван", 56),
+(31, "Трофические язвы", "Алексей", 56),
+(35, "ОРВИ", "Мария", 57),
+(26, "Ветрянка", "Дарья", 57),
+(56, "Пульпит", "Екатерина", 58),
+(58, "Периодонтит", "Евгениий", 58),
+(37, "Снятие зубного камня", "Александр", 58),
+(68, "Протезирование", "Анастасия", 58),
+(33, "Язвенная болезнь", "Борис", 59),
+(73, "Высыпания на руках", "Григорий", 60),
+(26, "Шелушение кожи", "Степан", 60),
+(46, "Опоясывающий лишай", "Максим", 60),
+(38, "Чесотка", "Кирилл", 60);
+
+
